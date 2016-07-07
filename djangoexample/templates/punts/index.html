@@ -1,0 +1,16 @@
+{% extends "basis.html" %}
+{% block pagetitle %} Tickets {% endblock %}
+
+{% block pagecontent %}
+{% if punts %}
+	<h2>Punts</h2>
+    <ul>
+    {% for p in punts %}
+        <li><a href="/punts/{{ p.id }}/">{{ p }}</a></li>
+    {% endfor %}
+    </ul>
+{%endif%}
+
+
+
+{% endblock %}

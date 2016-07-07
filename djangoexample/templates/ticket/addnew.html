@@ -1,0 +1,24 @@
+{% extends "basis.html" %}
+{% load staticfiles %}
+{% block pagetitle %} Tickets {% endblock %}
+{% block header %} 
+<link rel="stylesheet" type="text/css" href={% static "css/dropzonestyles.css"%} />
+<script src={% static "js/dropzone.js" %}></script> 
+<script src={% static "js/ticketscripts.js" %}></script> {% endblock %}
+
+
+{% block pagecontent %}
+<h2>Add a new ticket</h2>
+<p> {{ message }} </p>
+{% if form %}
+   <form action="/tickets/add/" method="post" id="ticket-add" autocomplete="false"> {% csrf_token %}
+	{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>    
+{% else %}
+{% endif %}
+<div id="addnewticketdropzone">
+<form action="/files/add/" class="dropzone clickable" id="ticket-file-upload" >
+<div class="default message"><span><p>Drop files here to upload</p></span></div></form>
+</div>
+{% endblock %}

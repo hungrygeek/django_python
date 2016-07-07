@@ -1,0 +1,23 @@
+{% if link %}
+<a href='{{m.get_overview_url}}'>
+{% endif %}
+{% if type == "name" %}
+	{% if len == "short" %}
+		{{m.user.first_name}}
+	{% elif len == "tiny" %}
+		{{m.user.first_name}}
+	{% elif len == "med" %}
+		{{m.user.first_name}} ({{m.user.email}})
+	{% elif len == "long" %}
+		{{m.user.first_name}} {{m.user.last_name}} ({{m.user.email}})
+	{% endif %}
+
+{% elif type == "pic" %}
+
+
+{% elif type == "card" %}
+
+{% endif %}
+{% if link %}
+</a>
+{% endif %}

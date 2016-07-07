@@ -1,0 +1,17 @@
+{% extends "basis.html" %}
+{% block pagetitle %} Tickets {% endblock %}
+
+{% block pagecontent %}
+{% if ticket_list %}
+	<h2>List of tickets by {{ string_ticket_ordering }}</h2>
+    <ul>
+    {% for ticket in ticket_list %}
+        <li><a href="/tickets/{{ ticket.id }}/">{{ ticket.summary }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tickets are available.</p>
+{% endif %}
+
+<a href="/tickets/new"><h2>Add new ticket</h2><a>
+{% endblock %}

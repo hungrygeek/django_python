@@ -1,0 +1,27 @@
+{% if c_form_cform %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static "css/comment_form.css"%} />
+<link rel="stylesheet" type="text/css" href={% static "css/dropzonestyles.css"%} />
+<script src={% static "js/dropzone.js" %}></script> 
+<script>
+$(document).ready(function(){
+	var mdrop = $("#comment_drop_zone").dropzone({url:"/files/add"});
+	//mdrop.on
+});
+</script>
+{#{% if c_form_hide %} HIDDEN {% else %} SHOWN {% endif %}#}
+ <form action="/comments/add/" method="post" {% if c_form_id %} id="{{c_form_id}}" {% else %}id="comment-add"{%endif%} class="form" autocomplete="false" {%if c_form_hide %}style="display:none;"{%endif%}> {% csrf_token %}
+{{ c_form_cform.non_field_errors }}
+ {{ c_form_cform.content_errors }}
+ {{ c_form_cform.content }}
+ <table id="comment_form_table" style="margin:0px 0px;">
+ <tr> 
+ <td style="width:30%"> {{ c_form_cform.files_errors }}
+ {{ c_form_cform.files }}</td>
+ <td> <div class="dropzone" id="comment_drop_zone" style="width:auto;height:50px;border-width:1px;background:rgba(0,0,0,0.01);"></div></td>
+ </tr>
+ </table>
+
+<input type="submit" value="Submit" />
+</form>    
+{%endif%}

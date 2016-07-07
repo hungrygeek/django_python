@@ -1,0 +1,28 @@
+Add user and file selection based on the Chosen.js plugin: https://github.com/harvesthq/chosen/ or jquery thingy
+
+DONE: Add logins: Done
+
+ONGOING: Add a form for files which is icourl and make icon creation/detection (Added icon support, just lacking making little icons and adding a dictionary of other file type's icons)
+
+DONE: Sort out why comment is duplicating each comment with one with pk 1 and why this does not break the DB!!!!!
+
+DONE: Add sub-commenting 
+
+Do accounts stuffs
+
+Sort out user page layout
+
+ONGOING: Sort out comment form layout: Got my creation of dropzones on divs inside a form
+		Next up is to add automatic resizing for the dropzone when something hits it.
+		And make sure the file ids get added to autofiles
+
+Profile pics?
+
+Profile editing?
+
+Account creation?
+
+ONGOING: Permissions: see sjcpunts/permission_maker
+
+Add closing on ticket
+

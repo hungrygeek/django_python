@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//members/migrations/0001_initial.py=utf-8
+encoding//ticket/migrations/0005_auto__add_icon__add_field_file_iconsource__add_field_file_iconlink__ad.py=utf-8
+encoding//ticket/migrations/0006_auto__add_field_comment_content_type.py=utf-8
+encoding//ticket/migrations/0009_auto__del_field_comment_uid__add_field_comment_id.py=utf-8

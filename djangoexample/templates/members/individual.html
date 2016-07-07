@@ -1,0 +1,35 @@
+{% extends "basis.html" %}
+{% load staticfiles %}
+
+{% block pagetitle %} User {{user.first_name}} {% endblock %}
+
+{% block pagecontent %}
+<p> {{ message }} </p>
+{% if user %}
+
+	<div id='user_profile' style="float:left;">
+	    <h2> User {{user.first_name}} {{user.last_name}}</h2>
+	    <p><b>Email:</b> {{ user.email }}</p>
+	    {%if user.files.all%}<p><b>Files:</b><br/>
+	    {% include 'files/filegrid.html' with filegrid_files=ticket.files.all filegrid_cols=filecols%}
+	    {%endif%}
+	</div>
+	
+    
+    <div style="float:right;width:40%">
+    <p>Recent Comments submitted by this user:</p>
+    <p>
+    {% if cgen %}
+	{% autoescape off %}
+	{{cgen}}
+	{% endautoescape %}
+	{% endif %}
+    
+    </p>
+	</div>
+	
+{% else %}
+{% endif %}
+
+
+{% endblock %}

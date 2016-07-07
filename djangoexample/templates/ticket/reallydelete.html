@@ -1,0 +1,13 @@
+{% extends "basis.html" %}
+{% load staticfiles %}
+{% block pagetitle %} Delete Ticket? {% endblock %}
+
+
+
+{% block pagecontent %}
+<h2>Delete a ticket</h2>
+<p> {{ message }} </p>
+<form action="real/" method="post"><input type="submit" value="Yes">{% csrf_token %}</form>
+<form action="fake/" method="post"><input type="submit" value="No">{% csrf_token %}</form>
+
+{% endblock %}

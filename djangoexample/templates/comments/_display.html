@@ -1,0 +1,28 @@
+{% load staticfiles %}
+{% if c_display_easytitle %}<b>{{c_display_comments|length}} Comments:</b><br/>{%endif%}
+<link rel="stylesheet" type="text/css" href={% static "css/comment_display.css"%} />
+<div class="comment_group">
+	
+	<!-- Just comments view -->
+    {% for c in c_display_comments %} 
+    {%if c_display_link %}<a href='{{c.parent.get_overview_url}}'>{%endif%}
+    <div class='comment'>
+    <p> {{c.content}} </p>
+    {% include 'files/filegrid.html' with filegrid_files=c.attachedfiles.all filegrid_img_width="80px" filegrid_justify="left" filegrid_css_ommit=forloop.first filegrid_cols=4%}
+    <ul class='comment_ul'>
+    <li class='comment_li'> {%if not c_display_no_user%}by {{c.submittedby}} at {%endif%}{{c.submittedtime|date:"d/m/y H:i"}}</li>
+    <li class='comment_li'> Comment</li>
+    </ul>
+    </div>
+    {%if c_display_link %}</a>{%endif%}
+    {% if c_display_comform %}
+    {% include 'comments/form.html' with c_form_cform=c.get_sub_form %}
+    {%endif%}
+    {{c.subcomments.all|length}}
+    {% if c.subcomments.all%}
+    
+    {#{% include 'comments/display.html' with c_display_comments=c.subcomments.all c_display_subcomments=c_display_subcomments %}#}
+    {%endif%}
+    {% endfor %}
+    
+</div>

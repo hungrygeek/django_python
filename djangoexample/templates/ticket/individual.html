@@ -1,0 +1,40 @@
+{% extends "basis.html" %}
+{% load staticfiles %}
+{% block pagetitle %} Tickets {% endblock %}
+{% load members_tools %}
+{% block pagecontent %}
+<p> {{ message }} </p>
+{% if ticket %}
+    <h2> Ticket </h2>
+    <p><b>Summary:</b> {{ ticket.summary }}</p>
+    <p><b>Filed:</b> {{ticket.filedtime|date:"d/m/y H:i"}} <b>by</b> {% member ticket.filedby.user length='long' %}</p>
+    {%if ticket.origin != ""%}<p><b>Origin:</b>{{ticket.origin}}</p>{%endif%}
+    <p><b>Status:</b> {{ticket.status}}</p>
+    {%if ticket.punts.all%}<p><b>Punts:</b> {% for p in ticket.punts.all %} {{p}} {% if not forloop.last%} , {%endif%} {%endfor%}</p>{%endif%}
+    {%if ticket.files.all%}<p><b>Files:</b><br/>
+    {% include 'files/filegrid.html' with filegrid_files=ticket.files.all filegrid_cols=filecols%}
+    </p>
+    {%endif%}
+    <p><ul>
+    {%if ass.all%}<li>{% for a in ass.all %} {%member a length='short'%} , {% endfor %}</li>{%endif%}
+    
+    </ul>
+    </p>
+    
+    <p>
+    {% if cgen %}
+	{% autoescape off %}
+
+	Comments:
+	{{cgen}}
+	{% endautoescape %}
+	{% endif %}
+    {#{% include 'comments/display.html' with c_display_comments=ticket.comments.all c_display_comform=True c_display_subcomments=5 c_display_easytitle=True %}#}
+    </p>
+    {% include 'comments/form.html' with c_form_cform=commentform %}
+    
+{% else %}
+{% endif %}
+
+
+{% endblock %}

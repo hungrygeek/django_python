@@ -1,0 +1,25 @@
+.filegrid img
+{
+	box-shadow:0px 0px 5px rgba(0,0,0,0.2);
+	padding:0px;
+	border-radius:3px;
+	width:150px;
+	margin:5px;
+}
+
+.filegrid tr
+{
+	margin:0px;
+	padding:0px;
+}
+.filegrid td
+{
+	margin:0px;
+	padding:0px;
+}
+
+.filegrid table
+{
+	margin-left:auto;
+	margin-right:auto;
+}

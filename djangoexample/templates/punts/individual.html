@@ -1,0 +1,31 @@
+{% extends "basis.html" %}
+{% load staticfiles %}
+{% block pagetitle %} Punt {{punt.name}} {% endblock %}
+
+{% block pagecontent %}
+<p> {{ message }} </p>
+{% if punt %}
+    <h2> Punt: {{punt}}</h2>
+    {%if punt.files.all%}<p><b>Files:</b><br/>
+    <div id="filegrid">
+    <table>
+    {%for f in punt.files.all%}
+    	{%if forloop.counter|divisibleby:filecols%}<tr>{%endif%}
+    	<td>
+    	<img src={% static f.actualfile.url%}>
+    	</td>
+    	
+    	{%if forloop.counter|divisibleby:filecols%}</tr>{%endif%}
+    {%endfor%}
+
+    </table>
+    </div>
+    </p>
+    {%endif%}
+    
+
+{% else %}
+{% endif %}
+
+
+{% endblock %}

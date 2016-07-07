@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+<title>{%block pagetitle %}{% endblock %} - SJCPuntSoc</title>
+<link rel="stylesheet" type="text/css" href={% static "mainstyles.css"%} />
+<link rel="icon" type="image/png"      href={% static "img/favicon.png"%}>
+<script src={% static "js/jquery-1.9.1.min.js" %}></script> 
+
+
+{% block header %} {%endblock%}
+
+</head>
+<body>
+
+<div id="header">
+<a href="/" class="title"><h1>St John's PuntSoc</h1>
+<br><br>
+</a>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/tickets">Tickets</a></li>
+<li><a href="/users">Members</a></li>
+<li><a href="/punts">Punts</a></li>
+<li><a href="/accounts" class="list">Accounts</a></li>
+<li><a href="/login/">Login</a></li>
+</ul>
+</div>
+
+<div id="breaker" style="top:120px"><img src={% static "img/breaker.png"%}></div>
+
+
+<div id="content">
+
+{%block pagecontent %} {% endblock %}
+
+</div>
+
+<div id="bb"><img src={% static "img/bottom_breaker.png"%} width="100%" height="3px" align="center"></div>
+<div id="footer">
+
+
+
+<p> &copy; St John's Punt Society 2012</p>
+{% if user.is_authenticated %}
+<p> Logged in as <a href='/users/{{user.username}}'>{%if user.first_name%}{{user.first_name}}{%else%}{{user.username}}{%endif%}</a>, <a href='/logout/'>Logout</a> </p>
+{%endif%}
+</div>
+
+<div id="logo">
+	<img src={% static "img/sjccols.png"%} alt="St John's Colours" usemap="#sjccolmap">
+
+	<map name="sjccolmap">
+	<area shape="poly" href="/" coords="36,0, 194,0, 282,89,  282,247"/>
+	</map>
+</div>
+
+</body>
+</html> 

@@ -1,0 +1,17 @@
+{% load staticfiles %}
+{% if not filegrid_css_ommit %}
+<link rel="stylesheet" type="text/css" href={% static "css/filegrid.css"%} />
+{%endif%}
+<div class="filegrid">
+<!--  <script src={% static "js/filegrid.js" %}></script> -->
+    <table class="filegrid" style=" {%if filegrid_justify == "left"%}margin-left:0px{%endif%}">
+    {%for f in filegrid_files%}
+    	{%if forloop.first %}<tr>{%endif%}
+    	<td>
+    	<img src={% static f.get_icon_url%} class="filegrid-img" id="file:{{f.id}}" title="[[file:{{f.id}}]]" style="{%if filegrid_img_width%}width:{{filegrid_img_width}}{%endif%}">
+    	</td>
+    	{%if forloop.counter|divisibleby:filegrid_cols%}</tr>{%if not forloop.last%}<tr>{%endif%}{%endif%}
+    	{%if forloop.last and not forloop.counter|divisibleby:filecols%}</tr>{%endif%}
+    {%endfor%}
+    </table>
+</div>

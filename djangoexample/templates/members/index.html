@@ -1,0 +1,23 @@
+{% extends "basis.html" %}
+{% block pagetitle %} Tickets {% endblock %}
+
+{% block pagecontent %}
+{% if committee %}
+	<h2>Committee</h2>
+    <ul>
+    {% for m in committee %}
+        <li><a href="/users/{{ m.user.username }}/">{{ m }}</a></li>
+    {% endfor %}
+    </ul>
+{%endif%}
+{% if other_users %}
+	<h2>Non-Committee Members</h2>
+	<ul>
+    {% for m in other_users %}
+        <li><a href="/users/{{ m.user.username }}/">{{ m }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endblock %}

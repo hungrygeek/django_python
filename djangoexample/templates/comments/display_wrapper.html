@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static "css/comment_display.css"%} />
+<script src={% static "js/comments_display.js" %}></script> 
+<script src={% static "js/dropzone.js" %}></script> 
+{% if hid_cform %}
+<link rel="stylesheet" type="text/css" href={% static "css/comment_form.css" %} />
+{% endif %}
+
+<div class="comment_group">
+{% autoescape off %}
+{{c_indivs}}
+{% endautoescape %}
+{% if hid_cform %}
+{% include 'comments/form.html' with c_form_cform=hid_cform c_form_hide="1" c_form_id="cgrouphform" %}
+{%endif%}
+</div>
+
+
